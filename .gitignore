@@ -44,7 +44,3 @@ publish_output/
 # Ignore Rider IDE settings
 .idea/
 
-# Ignore Docker files (optional)
-.dockerignore
-Dockerfile
-docker-compose.yml

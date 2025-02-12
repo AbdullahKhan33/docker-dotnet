@@ -1,23 +1,25 @@
-# Use official .NET SDK to build the application
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+# Use the official .NET SDK image as a build environment
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
 WORKDIR /app
 
-# Copy csproj and restore dependencies
-COPY *.csproj ./
-RUN dotnet restore
+# Copy the project file and restore dependencies
+COPY *.sln . 
+COPY MyWebAPI/*.csproj ./MyWebAPI/
+RUN dotnet restore MyWebAPI/MyWebAPI.csproj
 
 # Copy everything else and build
 COPY . ./
+WORKDIR /app/MyWebAPI
 RUN dotnet publish -c Release -o out
 
 # Create the runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=build-env /app/MyWebAPI/out .
 
-# Expose port
+# Expose ports
 EXPOSE 80
 EXPOSE 443
 
 # Set the entry point
-ENTRYPOINT ["dotnet", "mywebapi.dll"]
+ENTRYPOINT ["dotnet", "MyWebAPI.dll"]

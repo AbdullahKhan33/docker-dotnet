@@ -1,0 +1,50 @@
+# Ignore build files
+bin/
+obj/
+out/
+
+# Ignore user-specific files
+*.user
+*.vs
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.ide
+*.sw?
+
+# Ignore package management folders
+node_modules/
+packages/
+!packages/repositories.config
+
+# Ignore logs and temporary files
+*.log
+logs/
+*.tlog
+*.cache
+*.pyc
+*.pyo
+*.pdb
+
+# Ignore NuGet packages
+*.nupkg
+project.lock.json
+nuget.config
+.nuget/
+
+# Ignore application settings
+appsettings.Development.json
+secrets.json
+
+# Ignore Publish folder
+publish/
+publish_output/
+
+# Ignore Rider IDE settings
+.idea/
+
+# Ignore Docker files (optional)
+.dockerignore
+Dockerfile
+docker-compose.yml
